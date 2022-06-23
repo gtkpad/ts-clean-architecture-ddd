@@ -22,7 +22,7 @@ customerRouter.post("/", async (req: Request, res: Response) => {
     const output = await useCase.execute(customerDto);
     return res.json(output);
   } catch (error) {
-    return res.status(500).json(error);
+    return res.status(500).send(error);
   }
 });
 
@@ -33,6 +33,6 @@ customerRouter.get("/", async (req: Request, res: Response) => {
     const output = await useCase.execute({});
     return res.json(output);
   } catch (err) {
-    return res.status(500).json(err);
+    return res.status(500).send(err);
   }
 });

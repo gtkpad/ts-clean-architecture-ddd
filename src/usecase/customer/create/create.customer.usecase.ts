@@ -7,7 +7,7 @@ import {
 import { CustomerFactory } from "../../../domain/customer/factory/customer.factory";
 import { Address } from "../../../domain/customer/value-object/address";
 
-export class CustomerCreateUseCase {
+export class CreateCustomerUseCase {
   constructor(private readonly customerRepository: ICustomerRepository) {}
 
   public async execute(

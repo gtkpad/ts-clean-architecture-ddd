@@ -26,7 +26,16 @@ export class ProductRepository implements IProductRepository {
   }
 
   public async find(id: string): Promise<Product> {
-    const productModel = await ProductModel.findOne({ where: { id } });
+    let productModel: ProductModel;
+
+    try {
+      productModel = await ProductModel.findOne({
+        where: { id },
+        rejectOnEmpty: true,
+      });
+    } catch {
+      throw new Error(`Product with id ${id} not found`);
+    }
 
     return new Product(productModel.id, productModel.name, productModel.price);
   }

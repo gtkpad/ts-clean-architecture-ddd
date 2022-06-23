@@ -85,6 +85,14 @@ describe("Product Repository Test", () => {
     });
   });
 
+  it("should throw error when find non-inexistent product", async () => {
+    const productRepository = new ProductRepository();
+
+    await expect(productRepository.find("non-existent")).rejects.toThrow(
+      `Product with id non-existent not found`
+    );
+  });
+
   it("should find all products", async () => {
     const productRepository = new ProductRepository();
     const product1 = new Product("1", "Product 1", 100);

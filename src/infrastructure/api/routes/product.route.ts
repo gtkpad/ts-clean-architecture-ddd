@@ -17,7 +17,6 @@ productRouter.post("/", async (req: Request, res: Response) => {
     const output = await useCase.execute(customerDto);
     return res.json(output);
   } catch (error) {
-    console.log(error);
     return res.status(500).send(error);
   }
 });
